@@ -126,6 +126,35 @@ address a:hover {
   color: var(--accent-dark);
 }
 
+/* Social Links */
+.social-links ul {
+  display: flex;
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: var(--accent-dark);
+  transform: scale(1.15);
+}
+
+.social-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 /* Footer */
 footer {
   padding-top: 1.5rem;
