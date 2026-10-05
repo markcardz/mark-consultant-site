@@ -1,12 +1,27 @@
+/* ── Light mode tokens ── */
 :root {
-  --text: #1a1a1a;
-  --text-muted: #555;
+  --text: #0d0d0d;
+  --text-muted: #444;
   --bg: #fafaf8;
-  --border: #e4e4df;
+  --border: #d4d4cf;
   --accent: #2f5bea;
   --accent-dark: #1f43b8;
+  --heading-color: #2f5bea;
   --max-width: 42rem;
 }
+
+/* ── Dark mode tokens (default) ── */
+[data-theme="dark"] {
+  --text: #2ee8c8;          /* bright teal body text */
+  --text-muted: #7fd8c8;    /* softer teal for nav/footer */
+  --bg: #0d1117;            /* near-black background */
+  --border: #1e3030;
+  --accent: #2ee8c8;        /* teal accent */
+  --accent-dark: #1bc4aa;
+  --heading-color: #4dff88; /* bright light-green headings */
+}
+
+/* Apply dark mode by default via JS on <html> — see index.html */
 
 *,
 *::before,
@@ -25,6 +40,35 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.7;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ── Theme toggle button ── */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 100;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+#theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 header,
@@ -48,6 +92,7 @@ header h1 {
   font-size: 2.5rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  color: var(--heading-color);
 }
 
 header > p {
@@ -90,6 +135,7 @@ h2 {
   margin: 0 0 1rem;
   font-size: 1.5rem;
   line-height: 1.3;
+  color: var(--heading-color);
 }
 
 p {
@@ -201,5 +247,10 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  body,
+  #theme-toggle {
+    transition: none;
   }
 }
