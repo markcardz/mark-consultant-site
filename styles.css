@@ -49,27 +49,68 @@ body {
   top: 1rem;
   right: 1.25rem;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   background: transparent;
   border: 1.5px solid var(--border);
   border-radius: 2rem;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.85rem;
-  font-family: inherit;
-  color: var(--text-muted);
+  padding: 0.3rem 0.6rem;
   cursor: pointer;
+  color: var(--text-muted);
   transition: border-color 0.2s, color 0.2s;
-  white-space: nowrap;
 }
 
 #theme-toggle:hover {
-  color: var(--text);
   border-color: var(--accent);
+  color: var(--text);
 }
 
 #theme-toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* Pill track */
+.toggle-track {
+  position: relative;
+  display: inline-block;
+  width: 2.25rem;
+  height: 1.1rem;
+  background: var(--border);
+  border-radius: 1rem;
+  transition: background 0.25s;
+  flex-shrink: 0;
+}
+
+/* Knob */
+.toggle-knob {
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: var(--accent);
+  border-radius: 50%;
+  transition: transform 0.25s;
+}
+
+/* In dark mode knob slides right */
+[data-theme="dark"] .toggle-track {
+  background: var(--accent);
+}
+[data-theme="dark"] .toggle-knob {
+  transform: translateX(1.15rem);
+  background: var(--bg);
+}
+
+/* Sun active in light, dim in dark */
+.icon-sun { opacity: 1; }
+[data-theme="dark"] .icon-sun { opacity: 0.4; }
+
+/* Moon active in dark, dim in light */
+.icon-moon { opacity: 0.4; }
+[data-theme="dark"] .icon-moon { opacity: 1; }
 
 header,
 main,
